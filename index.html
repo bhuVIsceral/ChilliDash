@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chilli Dash</title>
+    <!-- CSS and library includes -->
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/tone@14.7.58/build/Tone.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="scoreDisplay">Score: 0</div>
+        <div id="flavourDisplay">
+            <span id="flavour1" class="text-gray-400">🔥</span>
+            <span id="flavour2" class="text-gray-400">🌶️</span>
+            <span id="flavour3" class="text-gray-400">🍋</span>
+        </div>
+        <div id="powerupDisplay"></div>
+
+        <div id="startMenu" class="ui-overlay">
+            <h1 class="ui-title">Chilli Dash</h1>
+            <p class="ui-text">Dodge obstacles, collect flavours!</p>
+            <p class="ui-text">Swipe left/right to change lanes, swipe up to jump.</p>
+            <button class="btn" onclick="startGame()">Start Game</button>
+        </div>
+
+        <div id="gameOverMenu" class="ui-overlay hidden">
+            <h1 class="ui-title">Game Over!</h1>
+            <p class="ui-text">Final Score: <span id="finalScore">0</span></p>
+            <button class="btn" onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+    <!-- Game logic script -->
+    <script src="js/main.js"></script>
+</body>
+</html>
