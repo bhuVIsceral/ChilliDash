@@ -114,6 +114,13 @@ body {
     padding: 0.5rem;
     border-radius: 8px;
     text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    max-width: 22ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .powerup-indicator.active {
     background-color: rgba(255, 255, 255, 0.2);
@@ -138,4 +145,19 @@ body {
     25% { transform: translateX(4px) translateY(2px); }
     50% { transform: translateX(-4px) translateY(-2px); }
     75% { transform: translateX(4px) translateY(-2px); }
+}
+
+/* Ultra-compact UI for very small placements (e.g., 320x50, 728x90) */
+@media (max-height: 120px) {
+    .ui-overlay {
+        padding: 0.5rem;
+        border-width: 1px;
+    }
+    .ui-title { font-size: 1rem; margin-bottom: 0.25rem; text-shadow: none; }
+    .ui-text { display: none; }
+    .btn { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+
+    #scoreDisplay { font-size: 0.75rem; top: 0.25rem; }
+    #flavourDisplay { font-size: 1rem; top: 1.25rem; }
+    #powerupDisplay { font-size: 0.5rem; top: 1.25rem; }
 }
