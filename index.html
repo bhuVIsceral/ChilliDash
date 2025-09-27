@@ -2,42 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chilli Dash</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='52'%3E%F0%9F%8C%B6%3C/text%3E%3C/svg%3E">
-    <!-- CSS and library includes -->
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="https://unpkg.com/tone@14.7.58/build/Tone.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>Chilli Runner</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Tone.js for audio -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
 </head>
 <body>
+
     <div id="game-container">
         <canvas id="gameCanvas"></canvas>
-        <div id="scoreDisplay">Score: 0</div>
-        <div id="flavourDisplay">
-            <span id="flavour1" class="text-gray-400">🔥</span>
-            <span id="flavour2" class="text-gray-400">🌶️</span>
-            <span id="flavour3" class="text-gray-400">🍋</span>
-        </div>
-        <div id="powerupDisplay"></div>
 
-        <div id="startMenu" class="ui-overlay">
-            <h1 class="ui-title">Chilli Dash</h1>
-            <p class="ui-text">Dodge obstacles, collect flavours!</p>
-            <p class="ui-text">Swipe left/right to change lanes, swipe up to jump.</p>
-            <button class="btn" onclick="startGame()">Start Game</button>
+        <!-- UI Overlays -->
+        <div id="header" class="ui-overlay">
+            <div id="logo">HUNTER FOODS</div>
+            <div id="header-buttons">
+                <div class="header-btn" id="pause-btn">&#9654;</div>
+                <div class="header-btn" id="mute-btn">&#128266;</div>
+            </div>
         </div>
 
-        <div id="gameOverMenu" class="ui-overlay hidden">
-            <h1 class="ui-title">Game Over!</h1>
-            <p class="ui-text">Final Score: <span id="finalScore">0</span></p>
-            <button class="btn" onclick="restartGame()">Play Again</button>
+        <div id="game-stats" class="ui-overlay">
+            <div id="lives-display">
+                <div id="lives-container"></div>
+                <div id="lives-multiplier" style="display: none;">x2</div>
+            </div>
+            <div id="score-display">
+                <svg id="score-display-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13.04,1.44c-0.4-0.89-1.68-0.89-2.08,0C9.6,3.62,7.72,4.4,6.4,5.92C4.24,8.21,5.33,12,8.4,13.67 c2.1,1.15,4.8,1.3,7.1-0.2c2.61-1.72,3.39-5.18,2-7.58C16.48,4.2,14.71,2.94,13.04,1.44z"/></svg>
+                <span id="score-value">0</span>
+            </div>
+        </div>
+
+        <div id="powerup-cards" class="ui-overlay">
+            <div class="powerup-card" id="powerup-card-chillies-x2">
+                <div class="powerup-icon" id="powerup-icon-chillies-x2"></div>
+                2x CHILLIES
+                <div class="powerup-progress-bar"><div class="powerup-progress"></div></div>
+            </div>
+            <div class="powerup-card" id="powerup-card-speed-boost">
+                <div class="powerup-icon" id="powerup-icon-speed-boost"></div>
+                2x RUN SPEED
+                <div class="powerup-progress-bar"><div class="powerup-progress"></div></div>
+            </div>
+            <div class="powerup-card" id="powerup-card-magnet">
+                <div class="powerup-icon" id="powerup-icon-magnet"></div>
+                8s MAGNET
+                <div class="powerup-progress-bar"><div class="powerup-progress"></div></div>
+            </div>
+        </div>
+
+        <div id="controls-container" class="ui-overlay">
+             <div class="control-btn" id="left-btn">&#9664;</div>
+             <div class="control-btn" id="jump-btn">JUMP</div>
+             <div class="control-btn" id="right-btn">&#9654;</div>
+        </div>
+        
+        <!-- Menus -->
+        <div id="startMenu" class="menu ui-overlay">
+            <h1>Chilli Runner</h1>
+            <p>Use the on-screen buttons or swipe to play. Collect chillies and power-ups!</p>
+            <button id="startButton">Start Game</button>
+        </div>
+        <div id="gameOverMenu" class="menu ui-overlay" style="display: none;">
+            <h1>Game Over</h1>
+            <p>Your Score: <span id="finalScore">0</span></p>
+            <button id="restartButton">Try Again</button>
         </div>
     </div>
-    <!-- Game logic script -->
-    <script src="js/main.js"></script>
+
+    <!-- Link to the main JavaScript file -->
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
