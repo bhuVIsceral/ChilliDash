@@ -91,12 +91,12 @@ export class Renderer {
         const s = this.sizeScaleAtY(player.y);
         
         // Use the correct frame from the loaded assets
-        const frame = player.animationFrame === 0 ? this.assets.run_pose_1 : this.assets.run_pose_2;
+        const frame = player.animationFrame === 0 ? this.assets.playerFrame1 : this.assets.playerFrame2;
         
         if (frame && frame.complete) {
             // Adjust scaling and positioning for the image
             const aspectRatio = frame.width / frame.height;
-            const drawHeight = 80; // Base height for the character
+            const drawHeight = 200; // Base height for the character
             const drawWidth = drawHeight * aspectRatio;
             
             this.ctx.scale(s, s);
