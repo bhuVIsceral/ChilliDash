@@ -90,17 +90,22 @@ export class Renderer {
         this.ctx.translate(player.x, player.y - player.yOffset);
         const s = this.sizeScaleAtY(player.y);
         
-        // Use the correct frame from the loaded assets
-        const frame = player.animationFrame === 0 ? this.assets.run_pose_1 : this.assets.run_pose_2;
+        let frame;
+        if (player.isJumping) {
+            // If jumping, use the jump frame
+            frame = this.assets.playerJumpFrame;
+        } else {
+            // Otherwise, use the correct running frame
+            frame = player.animationFrame === 0 ? this.assets.playerRun1 : this.assets.playerRun2;
+        }
         
         if (frame && frame.complete) {
-            // Adjust scaling and positioning for the image
             const aspectRatio = frame.width / frame.height;
-            const drawHeight = 80; // Base height for the character
+            const drawHeight = 200; // Base height for the character
             const drawWidth = drawHeight * aspectRatio;
             
             this.ctx.scale(s, s);
-            this.ctx.drawImage(frame, -drawWidth / 2, -drawHeight, drawWidth, drawHeight);
+            this.ctx.drawImage(frame, -drawWidth / 2, -drawHeight * .5, drawWidth, drawHeight);
         }
 
         this.ctx.restore();

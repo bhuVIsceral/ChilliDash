@@ -19,5 +19,7 @@ export const Config = {
         LANE_SCALE_TOP: 0.5,
         LANE_SCALE_BOTTOM: 1.5,
         LANE_SCALE_EXP: 1.2,
-    }
+    },
+    // This is the new setting for animation speed (in milliseconds)
+    PLAYER_ANIMATION_INTERVAL: 150
 };
