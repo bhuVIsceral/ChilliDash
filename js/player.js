@@ -28,8 +28,8 @@ export class Player {
 
         if (this.isJumping) {
             // While jumping, hold the first frame for a consistent "jump pose"
-            this.animationFrame = 0;
-            this.animationTimer = 0; // Reset timer during jump
+            // this.animationFrame = 0;
+            // this.animationTimer = 0; // Reset timer during jump
 
             const timeElapsed = performance.now() - this.jumpStart;
             if (timeElapsed >= Config.JUMP_DURATION) {

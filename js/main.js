@@ -151,8 +151,9 @@ class Game {
 // =================================================================================
 window.onload = () => {
     const assetPaths = {
-        playerFrame1: './assets/player_frame_1.svg',
-        playerFrame2: './assets/player_frame_2.svg'
+        playerRun1: './assets/player_run_1.svg',
+        playerRun2: './assets/player_run_2.svg',
+        playerJumpFrame: './assets/player_jump_1.svg'
     };
 
     // Show a loading message
